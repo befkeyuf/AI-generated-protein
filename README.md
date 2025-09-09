@@ -1,5 +1,5 @@
-<img width="501" height="386" alt="image" src="https://github.com/user-attachments/assets/3dc6b6c7-fa18-4f95-a708-ad409c05ecc0" /># AI-generated-protein
-AI generated protein
+# AI-generated-protein
+This study aims to generate proteins with EF-hand structures using a deep learning large language model, while evaluating the performance differences of deep learning models in protein design and enhancing the success rate and functionality of designs through a multi-tool collaborative strategy. ESM3 was employed for sequence generation and structure prediction, combined with AlphaFold3 for structure validation, and DeepGO for function prediction, successfully designing artificially customized proteins. This research provides an efficient framework for customized protein design, holding significant application value in fields such as biomedicine and industrial enzyme engineering.
 
 # Research Design Framework
 This study adopts a three-phase "Generation-Validation-Optimization" research framework, integrating three deep learning tools - ESM3 for sequence generation, AlphaFold3 for structural validation, and DeepGO for functional prediction - to establish a comprehensive workflow for EF-hand protein design. The research design follows the DBTL (Design-Build-Test-Learn) cycle concept, with iterative optimization conducted through multiple rounds.
@@ -31,3 +31,6 @@ Experimental Materials
 • Gene Ontology (GO) database
 
 <img width="415" height="217" alt="image" src="https://github.com/user-attachments/assets/77a7afaa-6b76-4047-8759-7f445e617e15" />
+
+
+For more research details, please refer to the paper 《Deep Learning-Based Generation of Proteins with EF-hand Structures Using ESM3》.
