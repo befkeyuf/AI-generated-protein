@@ -1,0 +1,33 @@
+#### 流程
+0、我想要设计什么（~~酶-活性中心？~~ 抗体-抗原？）
+1、找到一个方法（AI方法）可以生成想要的序列（多肽序列）
+ProteinMPNN：给定蛋白质骨架，找到一个将折叠成该结构的氨基酸序列。monomers, cyclic oligomers, protein nanoparticles, and protein-protein interfaces
+抗体数据库
+
+[使用深度学习进行抗体设计：从序列和结构设计到亲和力成熟 - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC11221890/)
+**3.1 基于结构的抗体设计**  
+针对 CDR-H3 环的设计难题，研究人员开发了专门的结构生成模型：
+- **Ig-VAE**：利用变分自编码器（VAE）直接生成抗体骨架的 3D 坐标，通过约束结构元素（如 Ramachandran 角）确保生成结构的合理性，实现旋转和平移不变性， backbone 生成精度达 φ±10°、ψ±10°（文档表 2）；
+[Ig-VAE: Generative modeling of protein structure by direct 3D coordinate generation - PubMed](https://pubmed.ncbi.nlm.nih.gov/35759518/)
+
+- **亲和力预测模型**：如 Shan 等人的 Transformer 模型，通过分析氨基酸替换对结合能（ΔΔG）的影响，识别蛋白质界面关键残基对，单突变预测相关系数达 0.65（文档表 2）。
+
+**3.2 基于序列的抗体设计**  
+蛋白质序列与自然语言的相似性启发了一系列语言模型的应用：
+- **AntiBERTy**：在 5.58 亿抗体序列上训练的 BERT 模型，能识别抗原结合残基，揭示亲和力成熟轨迹；
+- **IgLM**：基于 GPT-2 的抗体语言模型，可生成跨物种完整抗体序列，填充 CDR 环库，在区分人类与非人类抗体时 AUROC 达 0.96；
+- **nanoBERT**：专为纳米抗体设计的 Transformer，V 区重建准确率比通用模型高 12%（文档表 3）。
+
+**3.3 序列与结构结合的协同设计**  
+更先进的模型实现了两者的融合：
+- **RefineGNN**：通过图神经网络迭代优化序列与全局结构，利用图表示氨基酸位置和骨架角度，指导残基选择，已用于设计抗 SARS-CoV-2 抗体；
+    
+- **扩散模型**：如 DiffAb 和 AbDiffuser，结合去噪扩散概率模型（DDPM）实现 CDR 序列 - 结构共设计，其中 AbDiffuser 可独立生成可变长度的全原子抗体结构（文档图 7、表 4）；
+
+artificial intelligence, antibody sequence generate, function-based
+[Biophysical principles predict fitness of SARS-CoV-2 variants - PubMed](https://pubmed.ncbi.nlm.nih.gov/38820002/)
+
+2、设计一个序列（我们想要的蛋白，比如融合蛋白，抗体）
+3、生成序列
+4、用这个序列在模型可视化蛋白结构
+5、不同的模型跑同一个序列，进行不同模型之间的对比
